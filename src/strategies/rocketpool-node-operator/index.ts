@@ -42,7 +42,7 @@ export async function strategy(
   return Object.fromEntries(
     Object.entries(effectiveStakeResponse).map(([address, balance]) => [
       address,
-      Math.sqrt(parseFloat(formatUnits(balance, options.decimals))) / 2
+      parseFloat(formatUnits(balance, options.decimals))
     ])
   );
 }

@@ -47,13 +47,15 @@ export async function strategy(
 
   return Object.fromEntries(
     addresses.map((address) => {
+      console.log(delegations[address]);
+      // console.log(scores);
       const addressScore = delegations[address]
         ? delegations[address].reduce(
             (a, b) => a + scores.reduce((x, y) => (y[b] ? x + y[b] : x), 0),
             0
           )
         : 0;
-      return [address, addressScore];
+      return [address, Math.sqrt(addressScore) / 2];
     })
   );
 }
